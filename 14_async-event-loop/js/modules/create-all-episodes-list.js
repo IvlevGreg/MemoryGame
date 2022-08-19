@@ -16,15 +16,20 @@
 
     a.addEventListener('click', (e) => {
       e.preventDefault()
-      history.pushState(null, '', `?episode${episode.episode_id}`)
+      history.pushState(null, '', `?episode=${episode.episode_id}`)
       // console.log(location.href.match(/episode[0-9]+/g)[0].match(/[0-9]+/g)[0]);
       container.innerHTML = '';
       renderEpisodePage(data, episode, getLoadResourcesArray(episode), container)
     })
-
-    const episodeNumber = document.location.search ?
-    document.location.search.match(/[0-9]+/g)[0] : false
-    if(+episodeNumber === episode.episode_id) {
+    
+    const searchParams = new URLSearchParams(location.search);
+    let pageParam = {};
+    for (let [key, value] of searchParams) {
+      pageParam.searchKey = key;
+      pageParam.searchVal = value;
+    };
+    
+    if(+pageParam.searchVal === episode.episode_id) {
       renderEpisodePage(data, episode, getLoadResourcesArray(episode), container)
     }
 

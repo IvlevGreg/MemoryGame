@@ -26,6 +26,4 @@ function clearAndCreate(data, container) {
   container.append(createAllEpisodesList(data, container))
 }
 
-
-
 export default renderMainPage
