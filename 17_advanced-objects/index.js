@@ -5,15 +5,21 @@ const protoList = document.getElementById('proto-list')
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   protoList.innerHTML = ''
-
-  const li = document.createElement('li')
-  li.textContent = input.value
-  li.classList.add('p-3')
-  protoList.append(li)
-
-  const propertyList = createPropertyList(Object.keys(
-      Object.getPrototypeOf(window[input.value]).prototype))
-  li.append(propertyList)
+  input.classList.remove('is-invalid')
+  try {
+    const propertyList = createPropertyList(Object.keys(
+        Object.getPrototypeOf(window[input.value]).prototype))
+        const li = document.createElement('li')
+        li.textContent = input.value
+        li.classList.add('p-3')
+        protoList.append(li)
+        li.append(propertyList)
+        
+      } catch (error) {
+        console.log(error);
+        input.classList.add('is-invalid')
+        return
+      }
 
   getPrototypesChain(window[input.value]).forEach(proto => {
     const li = document.createElement('li')
@@ -59,12 +65,3 @@ function createPropertyList(arr) {
 
   return propertyList
 }
-
-// function createLiElement(parent, text){
-//   const li = document.createElement('li')
-//   li.textContent = 
-//   // li.
-
-// }
-
-// console.log(getPrototypesChain({}));
