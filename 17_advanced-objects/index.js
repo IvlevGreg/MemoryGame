@@ -6,25 +6,58 @@ form.addEventListener('submit', (e) => {
   e.preventDefault()
   protoList.innerHTML = ''
 
+  const li = document.createElement('li')
+  li.textContent = input.value
+  li.classList.add('p-3')
+  protoList.append(li)
+
+  const propertyList = createPropertyList(Object.keys(
+      Object.getPrototypeOf(window[input.value]).prototype))
+  li.append(propertyList)
+
   getPrototypesChain(window[input.value]).forEach(proto => {
     const li = document.createElement('li')
-
-    if(proto.constructor) {
-    li.textContent = proto.constructor.name} else {
-      li.textContent = proto
+    li.classList.add('p-3')
+    if(proto.name) {
+      li.textContent = proto.name 
+      const propertyList =  createPropertyList(Object.keys(proto.prototype))
+      li.append(propertyList)
+    } else {
+        li.textContent = proto.constructor.name
+      }
+      
+      protoList.append(li)
+    });
+  })
+  
+  function getPrototypesChain(obj) {
+    var proto = Object.getPrototypeOf(obj);
+    if (null === proto) {
+      return [];
+    }
+    if ('Function' === proto.constructor.name && !proto.name) {
+      return getPrototypesChain(proto);
     }
 
-    protoList.append(li)
-  });
-})
-
-function getPrototypesChain(obj) {
-  var proto = Object.getPrototypeOf(obj);
-  if (null === proto) {
-      return [];
-  }
-
   return [proto].concat(getPrototypesChain(proto));
+}
+
+function createPropertyList(arr) {
+  const propertyList = document.createElement('ol')
+  propertyList.classList.add('row')
+
+  arr.forEach((property) => {
+    const propertyElement = document.createElement('li')
+    propertyElement.classList.add('col-3')
+    const propertyText = document.createElement('div')
+    propertyText.classList.add('propery-text')
+    propertyText.textContent = property 
+
+    propertyElement.append(propertyText)
+    propertyList.append(propertyElement)
+  })
+
+  return propertyList
 }
 
 // function createLiElement(parent, text){
