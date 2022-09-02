@@ -159,9 +159,7 @@ switch (system) {
 }
 
 function checkFormCompleted() {
-  console.log(inputStatusMap);
   if (inputStatusMap.size === 0) {
-    console.log(true);
     formBtn.disabled = false
   } else {
     formBtn.disabled = true
