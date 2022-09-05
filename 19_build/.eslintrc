@@ -1,18 +1,18 @@
 { 
   "parser": "@babel/eslint-parser",
   "root": "true",
-  "extends": ["airbnb-base"],
+  "extends": ["eslint:recommended"],
   "env": {
-    "browser": "true",
+    "browser": true,
   },
   "rules": {
     "no-alert": 0,
-    "no-param-reassign": [2, { "props": "false" }],
+    "no-param-reassign": [2, { "props": false }],
     "no-plusplus": 0,
     "no-iterator": 0,
     "no-restricted-syntax": [2, "WithStatement"],
     "func-style": 0,
     "no-unused-vars": "error",
-    "max-len": [1, 120, 2, {"ignoreComments": "true"}]
+    "max-len": [1, 120, 2, {"ignoreComments": true}]
   },
 }

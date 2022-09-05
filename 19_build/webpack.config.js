@@ -61,7 +61,7 @@ module.exports = (env) => ( {
         {
           test: /\.js$/,
           exclude: /(node_modules)/,
-          // use: jsLoaders(env.prod),
+          use: jsLoaders(env.prod),
           use: {
             loader: 'babel-loader',
             options: {
@@ -109,7 +109,7 @@ module.exports = (env) => ( {
       },
       port: 8000,
     },
-    devtool: env.prod ? 'hidden-nosources-source-map' : 'source-map',
+    devtool: env.prod ? false : 'source-map',
     
   }
 )
