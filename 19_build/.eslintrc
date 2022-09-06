@@ -1,6 +1,9 @@
 { 
   "parser": "@babel/eslint-parser",
-  "root": "true",
+  "parserOptions": {
+    "requireConfigFile": false,
+  },
+  "root": true,
   "extends": ["eslint:recommended"],
   "env": {
     "browser": true,
