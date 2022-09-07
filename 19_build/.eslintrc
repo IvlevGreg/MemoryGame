@@ -7,6 +7,8 @@
   "extends": ["eslint:recommended"],
   "env": {
     "browser": true,
+    "node": true,
+    "es6": true
   },
   "rules": {
     "no-alert": 0,
@@ -15,7 +17,7 @@
     "no-iterator": 0,
     "no-restricted-syntax": [2, "WithStatement"],
     "func-style": 0,
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "max-len": [1, 120, 2, {"ignoreComments": true}]
   },
 }

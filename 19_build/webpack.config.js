@@ -107,7 +107,7 @@ module.exports = (env) => ( {
           usePolling: false,
         },
       },
-      port: 8000,
+      port: 9000,
     },
     devtool: env.prod ? false : 'source-map',
     

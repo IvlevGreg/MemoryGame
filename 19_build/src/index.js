@@ -5,8 +5,6 @@ import { el, mount } from "redom"
 const valid = require("card-validator");
 const validatorEmail = require("email-validator");
 
-let unusedVar = 4;
-
 import "./style/style.scss";
 
 import logoMir from './assets/img/mir-logo.png'
@@ -78,8 +76,8 @@ const maskOptionsCVV = {
 
 let maskCardNumber = IMask(inputCardNumber, maskOptionsCardNumber);
 
-const maskCardDate = IMask(inputCardDate, maskOptionsDate);
-const maskCardCvv = IMask(inputCardCVV, maskOptionsCVV);
+IMask(inputCardDate, maskOptionsDate);
+IMask(inputCardCVV, maskOptionsCVV);
 
 inputsAll.forEach(input => {
   addFalseInMap(input)
