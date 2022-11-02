@@ -110,6 +110,7 @@
       function createCards(number, id) {
         const card = document.createElement('li');
         const cardFront = document.createElement('div');
+        // cardFront.textContent = number;
         const cardBack = document.createElement('div');
         const cardNumber = document.createElement('p');
         card.id = id;
