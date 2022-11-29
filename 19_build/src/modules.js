@@ -1,1 +1,0 @@
-import './style/bootstrap.scss';
